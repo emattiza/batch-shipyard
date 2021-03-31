@@ -26,6 +26,12 @@ init:
 install:
 - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 - where pip
+- appveyor DownloadFile https://win.rustup.rs/ -FileName rustup-init.exe
+- rustup-init -yv --default-toolchain stable
+- set PATH=%PATH%;%USERPROFILE%\.cargo\bin
+- rustc -vV
+- cargo -vV
+- pip install --upgrade pip
 - pip install --upgrade setuptools wheel
 - pip install -r requirements.txt
 - pip install --no-deps -r req_nodeps.txt
